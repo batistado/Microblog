@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>Hi, {{ current_user.username }}!</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>{{ form.data.label }}</p>
+        {{ form.body(cols=50, rows=4)}}<br/>
+        <p>{{ form.submit() }}</p>
+    </form>
+    {% if posts %}
+    {% for post in posts %}
+    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
+    {% endfor %}
+    {% else %}
+    <p>Sorry, you have no posts to view!</p>
+    {% endif %}
+{% endblock %}
